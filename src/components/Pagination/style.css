@@ -1,0 +1,5 @@
+.Pagination {
+    display: flex;
+    margin: 20px;
+    flex-Direction: "row";
+  }

@@ -25,12 +25,15 @@ const LandingPage = () => {
     fetchPosts(posts);
   }, [apiPage]);
 
+
+  /* Constants to keep Caculate First,Last and Current post */
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const fetchNextPage = (pageNumbers) => {
+  /* Updates ApiPage state to get the new page */
+  const fetchNextPage = (pageNumber) => {
     setCurrentPage(currentPage + 1);
     if (currentPage == 10) {
       setApiPage(apiPage + 1);
