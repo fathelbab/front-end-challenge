@@ -11,19 +11,40 @@ const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [apiPage, setApiPage] = useState(1);
   const [postsPerPage] = useState(10);
+  const [date, setDate] = useState(``);
 
+
+/* Calculate and append date */
+const getDate = () => {
+  const targetDate = new Date();
+  const year = targetDate.getFullYear();
+  const month = targetDate.getMonth() + 1;
+  const day = targetDate.getDate() - 1 < 10 ? `0${targetDate.getDate() - 1}` :targetDate.getDate() - 1 ;
+  const monthMinusone = month - 1 ;
+  const constructedDate = [year, `0` + monthMinusone, day].join("-");
+  setDate(constructedDate);
+  console.log(constructedDate);
+  console.log(typeof(month));
+}
   useEffect(() => {
     const fetchPosts = async () => {
+      try {
+      getDate();
       setLoading(true);
-      const res = await axios.get(
-        `https://api.github.com/search/repositories?q=created:>2021-06-01&sort=stars&order=desc&per_page=100&page=${apiPage}`
+      console.log( `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc&per_page=100&page=${apiPage}`)
+       const res = await axios.get(
+        `https://api.github.com/search/repositories?q=created:>${date}&sort=stars&order=desc&per_page=100&page=${apiPage}`
       );
       setPosts(res.data.items);
       setLoading(false);
+       }
+       catch (e){
+        console.log("that failed", e); 
+       }
     };
 
     fetchPosts(posts);
-  }, [apiPage]);
+  }, [date, apiPage]);
 
 
   /* Constants to keep Caculate First,Last and Current post */
