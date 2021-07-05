@@ -1,0 +1,28 @@
+.row {
+  display: flex;
+  margin: 10px;
+  box-shadow: 10px 10px 5px grey;
+  flex-Direction: "row";
+}
+
+.column {
+  flex: 50%;
+}
+
+.img {
+  width: 200px; /* width of container */
+  height: 200px; /* height of container */
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.card-text {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.Description-row {
+  display: flex;
+  margin: 10px;
+  margin-top: 89px;
+}
