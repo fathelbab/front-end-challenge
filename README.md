@@ -48,7 +48,6 @@ npm run  build
 - [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner)
 - [axios](https://www.npmjs.com/package/axios)
 - [react](https://reactjs.org/docs/getting-started.html) 
-- [prettier](https://www.npmjs.com/package/prettier)
 
 
 
